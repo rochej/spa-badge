@@ -1,7 +1,12 @@
 @import url("normalize.css");
 
+
 .icon{
   height: 40px;
+}
+
+#nicki-minaj {
+  visibility: hidden;
 }
 
 body {

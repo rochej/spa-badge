@@ -16,6 +16,11 @@
       <ul class="name-link" id ="peeps">
       </ul>
     </div><!--close missy-elliot-->
+    <div id="q-tip">
+    </div><!--close q-tip-->
+    <div id="nicki-minaj">
+      <a id="back" href="javascript:history.back()">Go Back</a>
+    </div><!-- end nicki minaj-->
   </div><!--close container-->
 </body>
 </html>
@@ -26,11 +31,24 @@
   {{/peeps}}
 </script>
 
+<script id="badge-partial" type="text/x-handlebars-template">
+        {{this.text}}<a href="http://localhost:3000/peeps/{{this.peep_id}}/badges/{{this.badge_id}}/votes?up_vote=true"><img class="icon" src="img/up_peep.gif"></a><span id="up{{this.badge_id}}">{{this.up_votes}}</span><a href="http://localhost:3000/peeps/{{this.peep_id}}/badges/{{this.badge_id}}/votes?up_vote=false"><img class="icon" src="img/down_peep.png"></a><span id="down{{this.badge_id}}">{{this.down_votes}}</span>
+</script>
+
 <script id="show-template" type="text/x-handlebars-template">
   <h1>{{peep.name}}</h1>
-  <ul>
+  <ul id="badges">
     {{#each badges}}
-      <li>{{this.text}}<a href="http://localhost:3000/peeps/{{this.peep_id}}/badges/{{this.badge_id}}/votes?up_vote=true"><img class="icon" src="img/up_peep.gif"></a>{{this.up_votes}}<a href="http://localhost:3000/peeps/{{this.peep_id}}/badges/{{this.badge_id}}/votes?up_vote=false"><img class="icon" src="img/down_peep.png"></a>{{this.down_votes}}</li>
+      <li>{{>badge}}</li>
     {{/each}}
   </ul>
 </script>
+
+<script id="form-template" type="text/x-handlebars-template">
+  <form id="badge-form" action="http://localhost:3000/peeps/{{peep.id}}/badges" method="POST">
+    <label for="text">New Badge</label>
+    <input id="text" type="text" name="text">
+    <input type="submit">
+  </form>
+</script>
+
