@@ -1,5 +1,9 @@
 @import url("normalize.css");
 
+.icon{
+  height: 40px;
+}
+
 body {
   background-color: #000;
 }
