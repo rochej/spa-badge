@@ -22,4 +22,9 @@ class ApplicationController < ActionController::API
     end
     return count
   end
+
+  def jsonify_badge(peep, badge)
+    count = count_votes(badge)
+    return {peep_id: peep.id, badge_id: badge.id, text: badge.text, up_votes: count[0], down_votes: count[1]}
+  end
 end

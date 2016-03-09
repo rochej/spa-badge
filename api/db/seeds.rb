@@ -12,8 +12,11 @@ Vote.delete_all
 
 @peep = Peep.create(name: "Dave")
 @peep.badges.create(text: "WAWGTN")
+@peep.badges.create(text: "Most likely to stand with contrapposto")
+@peep.badges.create(text: "Calls a # a sharp")
 @peep.badges.first.votes.create(up: true)
 
 @peep = Peep.create(name: "Roche")
 @peep.badges.create(text: "Most likely to pirouette.")
+@peep.badges.create(text: "Superhero name is her own name")
 @peep.badges.first.votes.create(up: true)
