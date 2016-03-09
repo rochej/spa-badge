@@ -13,6 +13,9 @@ class PeepsController < ApplicationController
     @badges.each do |badge|
       badge_votes << jsonify_badge(@peep, badge)
     end
+
+    badge_votes.sort! { |a, b| b[:up_votes] <=> a[:up_votes]}
+
     render :json => {peep: @peep, badges: badge_votes}
   end
 

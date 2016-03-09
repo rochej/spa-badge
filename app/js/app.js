@@ -2,6 +2,19 @@ var indexView = function(){
 
 }
 
+indexView.prototype.addCookie = function(){
+  if (document.cookie){
+    var cookie = document.cookie
+    var cookieMonster = cookie.split("=")
+    var numVotes = parseInt(cookieMonster[1], 10) + 1
+    var newCookie = "votes=" + numVotes
+    document.cookie = newCookie
+  }
+  else{
+    document.cookie="votes=1"
+  }
+}
+
 indexView.prototype.hashMaster = function(peepName) {
   var peepUrl = {name: peepName};
   history.pushState(peepUrl, "Squirrel Badges", peepName);
@@ -14,7 +27,7 @@ indexView.prototype.loadPeeps = function(allThePeeps){
   var html = template(context);
   var element = document.createElement('div');
   element.innerHTML = html;
-  $.select("#peeps").appendChild(element);
+  $.select("#missy-elliot").appendChild(element);
 }
 
 indexView.prototype.loadShow = function(peepShow){
@@ -62,6 +75,7 @@ indexView.prototype.linkToVote = function(uri) {
     $.select(upSelector).textContent = response.votes[0]
     var downSelector = "down" + response.badge_id
     $.select(downSelector).textContent = response.votes[1]
+    index.addCookie();
   })
 }
 
@@ -81,7 +95,7 @@ indexView.prototype.linkToBadge = function(uri) {
 }
 
 indexView.prototype.bindListeners = function() {
-  $.select('#peeps').addEventListener("click", function(event){
+  $.select('#missy-elliot').addEventListener("click", function(event){
     event.preventDefault();
     var uri = event.target.href;
     index.linkToName(uri);
@@ -103,7 +117,8 @@ indexView.prototype.bindListeners = function() {
 
   $.on("#nicki-minaj", "click", function(event){
     event.preventDefault();
-    console.log(event)
+    window.location.pathname='';
+    console.log(event);
     $.select('#q-tip').innerHTML = ''
     $.select('#missy-elliot').innerHTML = ''
     index.loadIndexPage();

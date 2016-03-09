@@ -9,26 +9,26 @@
 <body>
   <div class="container">
     <div class="logo">
-      <h1> SPA Badge </h1>
+      <h1> Squirrel Badge </h1>
     </div><!--close logo-->
     <div id="missy-elliot">
-      <h1> SF Squirrels </h1>
-      <ul class="name-link" id ="peeps">
-      </ul>
     </div><!--close missy-elliot-->
     <div id="q-tip">
     </div><!--close q-tip-->
     <div id="nicki-minaj">
-      <a id="back" href="javascript:history.back()">Go Back</a>
+      <br>
+      <a id="back" href="#">Go Back</a>
     </div><!-- end nicki minaj-->
   </div><!--close container-->
 </body>
 </html>
 
 <script id="index-template" type="text/x-handlebars-template">
+  <ul class="name-link" id ="peeps">
   {{#peeps}}
     <li><a class-"name-link" href='http://localhost:3000/peeps/{{id}}'>{{name}}</a></li>
   {{/peeps}}
+  </ul>
 </script>
 
 <script id="badge-partial" type="text/x-handlebars-template">
